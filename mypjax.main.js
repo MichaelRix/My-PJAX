@@ -2,8 +2,8 @@
  * Made by Michael on 17th,Oct. 2015
  */
 
-var container="#content",
-	fragment="#content",
+var container="#pjax",
+	fragment="#pjax",
 	timeout=3000;
 (function($){
 	/* Main pjax entry */
@@ -30,11 +30,28 @@ var container="#content",
 			$.post(url,data,function(text,status,xhr){
 				$.pjax({
 					url:window.location.href,
-					container:"#content",
-					fragment:"#content"
+					container:container,
+					fragment:fragment
 				});
 			});
 			/* When comment posting meets an error */
+			return false;
+		});
+	}
+	/* Search done by using pjax */
+	function pjsearch(){
+		var form=$("form.search-form");
+		var url=form.attr("action");
+		form.on("submit",function(){
+			NProgress.start();
+			var word=form.find(".search-field").val();
+			$.pjax({
+				/* Encode search keywords */
+				url:url+"?s="+encodeURIComponent(word),
+				container:container,
+				fragment:container,
+			});
+			/* Do nothing */
 			return false;
 		});
 	}
@@ -46,11 +63,14 @@ var container="#content",
 		NProgress.done();
 		/* Attaches event for pjax-replaced comment forms */
 		pjcomment();
+		/* Event for pjax search */
+		pjsearch();
 	});
 	$(document).ready(function(){
 		/* Designed for Internet Explorer */
 		$.ajaxSetup({cache:false});
 		/* Initialize */
 		pjcomment();
+		pjsearch();
 	});
 })(jQuery);
