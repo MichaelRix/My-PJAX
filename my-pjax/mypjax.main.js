@@ -13,46 +13,48 @@ var container="#pjax",
 		scrollTo:false
 	});
 	/* Handles comments fired for pjax */
-	function pjcomment() {
-		/* Comment form & elements */
-		var form=$("form#commentform.comment-form");
-		var url=form.attr("action");
-		/* Post data */
-		var data="";
-		form.on("submit",function(){
-			NProgress.start();
-			form.find("input,textarea").each(function(){
-				var that=$(this);
-				/* Parse all post data */
-				data+="&"+that.attr("name")+"="+encodeURIComponent(that.val())
-			});
-			/* Ajax request send */
-			$.post(url,data,function(text,status,xhr){
-				$.pjax({
-					url:window.location.href,
-					container:container,
-					fragment:fragment
+	function mypj(){
+		/* Search for forms */
+		$("form").each(function(){
+			var form=$(this);
+			/* If comment form found */
+			if(form.hasClass('comment-form')){
+				/* Attach event for comment form */
+				form.on('submit',function(){
+					var url=form.attr('action'),data='';
+					/* Parse all params */
+					form.find('input,textarea').each(function(){
+						var that=$(this);
+						data+="&"+that.attr("name")+"="+encodeURIComponent(that.val());
+					});
+					/* Send ajax request */
+					$.post(url,data,function(){
+						$.pjax({
+							url:window.location.href,
+							container:container,
+							fragment:fragment
+						});
+					});
+					/* If error do nothing */
+					return false;
 				});
-			});
-			/* When comment posting meets an error */
-			return false;
-		});
-	}
-	/* Search done by using pjax */
-	function pjsearch(){
-		var form=$("form.search-form");
-		var url=form.attr("action");
-		form.on("submit",function(){
-			NProgress.start();
-			var word=form.find(".search-field").val();
-			$.pjax({
-				/* Encode search keywords */
-				url:url+"?s="+encodeURIComponent(word),
-				container:container,
-				fragment:container,
-			});
-			/* Do nothing */
-			return false;
+				/* If search form found */
+			}else if(form.hasClass('search-form')){
+				var form=$(this);
+				form.on('submit',function(){
+					/* Get arguments */
+					var url=form.attr('action'),
+						word=form.find('.search-field').val();
+					/* Load pjax */
+					$.pjax({
+						url:url+"?s="+encodeURIComponent(word),
+						container:container,
+						fragment:container
+					});
+					/* Do nothing when error */
+					return false;
+				});
+			}
 		});
 	}
 	$(document).on("pjax:send",function(){
@@ -61,16 +63,13 @@ var container="#pjax",
 	});
 	$(document).on("pjax:complete",function(){
 		NProgress.done();
-		/* Attaches event for pjax-replaced comment forms */
-		pjcomment();
-		/* Event for pjax search */
-		pjsearch();
+		/* Attach events */
+		mypj();
 	});
 	$(document).ready(function(){
 		/* Designed for Internet Explorer */
 		$.ajaxSetup({cache:false});
 		/* Initialize */
-		pjcomment();
-		pjsearch();
+		mypj();
 	});
 })(jQuery);
