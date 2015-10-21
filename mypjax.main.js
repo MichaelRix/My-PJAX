@@ -32,7 +32,8 @@ var container="#pjax",
 						$.pjax({
 							url:window.location.href,
 							container:container,
-							fragment:fragment
+							fragment:fragment,
+							timeout:timeout
 						});
 					});
 					/* If error do nothing */
@@ -49,7 +50,8 @@ var container="#pjax",
 					$.pjax({
 						url:url+"?s="+encodeURIComponent(word),
 						container:container,
-						fragment:container
+						fragment:container,
+						timeout:timeout
 					});
 					/* Do nothing when error */
 					return false;
