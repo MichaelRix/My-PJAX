@@ -62,6 +62,10 @@ var container = "#pjax",
 		$.ajaxSetup({
 			cache: false
 		});
+		NProgress.configure({
+			trickleRate: 0.03,
+			trickleSpeed: 100
+		});
 		pjaxinit();
 	});
 })(jQuery);
