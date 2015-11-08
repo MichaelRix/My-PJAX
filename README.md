@@ -19,7 +19,7 @@ Simply install this plugin and edit few files, then you can enjoy pjax XD
 **Though installing pjax is simple, but defeating those aftermaths on your own is not easy enough.**
 
 # Usage
-See my brand new article here: https://www.nottres.com/project/saigo-mypjax-and-comment-ajax.html
+See my brand new article here: https://www.nottres.com/project/wp-mypjax.html
 
 # License
 This plugin will remain free and open-source.
