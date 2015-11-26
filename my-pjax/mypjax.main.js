@@ -57,6 +57,7 @@ var container = "#pjax",
 	$(document).on("pjax:complete", function() {
 		NProgress.done();
 		pjaxinit();
+		$('html, body').animate({scrollTop: 0}, 1000);
 	});
 	$(document).ready(function() {
 		$.ajaxSetup({
