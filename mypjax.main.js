@@ -3,12 +3,11 @@
  */
 
 var container = "#pjax",
-	fragment = "#pjax",
 	timeout = 3000;
 (function($) {
 	$(document).pjax("a[class!='post-edit-link'][class!='comment-edit-link']", container, {
 		timeout: timeout,
-		fragment: fragment,
+		fragment: container,
 		scrollTo: false
 	});
 
@@ -28,7 +27,7 @@ var container = "#pjax",
 						$.pjax({
 							url: window.location.href,
 							container: container,
-							fragment: fragment,
+							fragment: container,
 							timeout: timeout
 						});
 					});
@@ -55,9 +54,9 @@ var container = "#pjax",
 		NProgress.start();
 	});
 	$(document).on("pjax:complete", function() {
+		$('html, body').animate({scrollTop: 0}, 1000);
 		NProgress.done();
 		pjaxinit();
-		$('html, body').animate({scrollTop: 0}, 1000);
 	});
 	$(document).ready(function() {
 		$.ajaxSetup({
