@@ -2,17 +2,17 @@
  * Made by Michael on 17th,Oct. 2015
  */
 
-var container = "#pjax",
-	timeout = 3000;
+var __container = '#pjax',
+	__timeout = 3000;
 (function($) {
 	$(document).pjax("a[class!='post-edit-link'][class!='comment-edit-link']", container, {
-		timeout: timeout,
-		fragment: container,
+		timeout: __timeout,
+		fragment: __container,
 		scrollTo: false
 	});
 
 	function pjaxinit() {
-		$("form").each(function() {
+		$('form').each(function() {
 			var form = $(this);
 			if (form.hasClass('comment-form')) {
 				form.on('submit', function() {
@@ -20,15 +20,15 @@ var container = "#pjax",
 						data = '';
 					form.find('input,textarea').each(function() {
 						var that = $(this);
-						data += "&" + that.attr("name") + "=" + encodeURIComponent(that.val());
+						data += '&' + that.attr('name') + '=' + encodeURIComponent(that.val());
 					});
 					NProgress.start();
 					$.post(url, data, function() {
 						$.pjax({
 							url: window.location.href,
-							container: container,
-							fragment: container,
-							timeout: timeout
+							container: __container,
+							fragment: __container,
+							timeout: __timeout
 						});
 					});
 					NProgress.done();
@@ -40,22 +40,24 @@ var container = "#pjax",
 					var url = form.attr('action'),
 						word = form.find('.search-field').val();
 					$.pjax({
-						url: url + "?s=" + encodeURIComponent(word),
-						container: container,
-						fragment: container,
-						timeout: timeout
+						url: url + '?s=' + encodeURIComponent(word),
+						container: __container,
+						fragment: __container,
+						timeout: __timeout
 					});
 					return false;
 				});
 			}
 		});
 	}
-	$(document).on("pjax:send", function() {
+	$(document).on('pjax:send', function() {
 		NProgress.start();
 	});
-	$(document).on("pjax:complete", function() {
+	$(document).on('pjax:complete', function() {
 		$('html, body').animate({scrollTop: 0}, 1000);
 		NProgress.done();
+		/* Do your things in this func: __func_afterm */
+		__func_afterm();
 		pjaxinit();
 	});
 	$(document).ready(function() {
