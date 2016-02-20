@@ -54,7 +54,10 @@ var __container = '#pjax',
 		NProgress.start();
 	});
 	$(document).on('pjax:complete', function() {
-		$('html, body').animate({scrollTop: 0}, 1000);
+		offset = $(__container).scrollTop();
+		hash = window.location.hash;
+		if(hash.indexOf('#comment-') == 0) offset = $(hash).offset().top;
+		$('html, body').animate({scrollTop: offset}, 1000);
 		NProgress.done();
 		/* Do your things in this func: __func_afterm */
 		__func_afterm();
