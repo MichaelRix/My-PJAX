@@ -1,7 +1,8 @@
 # My-PJAX
+
 Simple and useful PJAX plugin for WordPress
 
-Example site: https://www.nottres.com
+Site: https://www.nottres.com
 
 > WARNING: Please do **NOT** try this if you have no any php programming experience.
 
@@ -14,14 +15,17 @@ Example site: https://www.nottres.com
 - Search form pjax support
 
 # Why it's special
+
 Simply install this plugin and edit few files, then you can enjoy pjax XD
 
 **Though installing pjax is simple, but defeating those aftermaths on your own is not easy enough.**
 
 # Usage
+
 See my brand new article here: https://www.nottres.com/project/wp-mypjax.html
 
 # License
+
 This plugin will remain free and open-source.
 
 Please notice that this repo used [jQuery PJAX](https://github.com/defunkt/jquery-pjax) and [NProgress](https://github.com/rstacruz/nprogress).

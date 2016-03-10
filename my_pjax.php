@@ -9,10 +9,10 @@
 
 /*
  * Plugin Name:		My PJAX
- * Plugin URI:		https://nottres.com
+ * Plugin URI:		https://www.nottres.com
  * Description:		Dream of my PJAX
- * Author:		Michael Luis
- * Author URI:		https://nottres.com
+ * Author:		Michael R.
+ * Author URI:		https://www.nottres.com
  * Version:		1.0
  * License:		GPL
  */
