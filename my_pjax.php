@@ -17,7 +17,7 @@
  * License:		GPL
  */
 
-function mp_activate()
+function mypjax_activate()
 {
     $mp_js = plugin_dir_url(__FILE__) . 'mypjax.main.js';
     wp_enqueue_script('jquery-pjax', '//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js', array('jquery'), false, true);
@@ -26,4 +26,5 @@ function mp_activate()
     wp_enqueue_script('nprogress', 'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js', array('jquery'));
 }
 
-add_action('wp_head', 'mp_activate');
+/* Add these to blog content */
+add_action('wp_head', 'mypjax_activate');

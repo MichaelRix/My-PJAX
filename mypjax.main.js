@@ -1,11 +1,11 @@
 /*
- * Made by Michael on 17th,Oct. 2015
+ * Created by Michael on 17th,Oct. 2015
  */
 
 var __container = '#pjax',
 	__timeout = 3000;
 (function($) {
-	$(document).pjax("a[class!='post-edit-link'][class!='comment-edit-link']", container, {
+	$(document).pjax("a[target!='_blank'][class!='post-edit-link'][class!='comment-edit-link']", container, {
 		timeout: __timeout,
 		fragment: __container,
 		scrollTo: false
