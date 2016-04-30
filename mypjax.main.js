@@ -5,7 +5,7 @@
 var __container = '#pjax',
 	__timeout = 3000;
 (function($) {
-	$(document).pjax("a[target!='_blank'][class!='post-edit-link'][class!='comment-edit-link']", container, {
+	$(document).pjax("a[target!='_blank'][class!='post-edit-link'][class!='comment-edit-link']", __container, {
 		timeout: __timeout,
 		fragment: __container,
 		scrollTo: false
