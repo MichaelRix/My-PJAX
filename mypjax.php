@@ -1,6 +1,6 @@
 <?php
 
-/* jQuery PJAX from there
+/* jQuery PJAX is from here
  * https://github.com/defunkt/jquery-pjax
  * And NProgress
  * https://github.com/rstacruz/nprogress
@@ -11,7 +11,7 @@
  * Plugin Name:		My PJAX
  * Plugin URI:		https://www.nottres.com
  * Description:		Dream of my PJAX
- * Author:		Michael R.
+ * Author:		Michael AJ
  * Author URI:		https://www.nottres.com
  * Version:		1.0
  * License:		GPL
@@ -21,9 +21,9 @@ function mypjax_activate()
 {
     $mp_js = plugin_dir_url(__FILE__) . 'mypjax.main.js';
     wp_enqueue_script('jquery-pjax', '//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js', array('jquery'), false, true);
-    wp_enqueue_script('mypjax-main', $mp_js, array(), false, true);
-    wp_enqueue_style('nprogress', 'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css');
-    wp_enqueue_script('nprogress', 'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js', array('jquery'));
+    wp_enqueue_script('mypjax-js', $mp_js, array(), false, true);
+    wp_enqueue_style('nprogress-css', 'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css');
+    wp_enqueue_script('nprogress-js', 'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js', array('jquery'));
 }
 
 /* Add these to blog content */
